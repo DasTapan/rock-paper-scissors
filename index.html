@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+</head>
+
+<body>
+    <script>
+        const choiceArray = ['rock', 'paper', 'scissors']
+        let playerwin = 0;
+        let computerWin = 0;
+
+        function playerPlay() {
+            let playerChoice = prompt("Enter :")
+            playerChoice = playerChoice.toLowerCase()
+            return playerChoice;
+        }
+
+        function computerPlay() {
+            return randomChoice();
+        }
+
+        function randomChoice() {
+            let randomNumber = Math.floor(Math.random() * 3)
+            if (randomNumber === 0) return choiceArray[0]
+            else if (randomNumber == 1) return choiceArray[1]
+            else return choiceArray[2]
+        }
+
+        for (let i = 0; i < 5; i++) {
+            game(playerPlay, computerPlay)
+
+        }
+
+        function game(a, b) {
+            let x = a()
+            let y = b()
+
+            if (x === y) alert('Tied. Same choice')
+            else if (x == 'rock' && y == 'paper') {
+                alert(`You chose ${x}, computer chose ${y}, computer won`)
+                computerWin++
+            }
+            else if (x == 'rock' && y == 'scissors') {
+                alert(`You chose ${x}, computer chose ${y}, player won`)
+                playerwin++
+            }
+            else if (x == 'paper' && y == 'rock') {
+                alert(`You chose ${x}, computer chose ${y}, player won`)
+                playerwin++
+            }
+            else if (x == 'paper' && y == 'scissors') {
+                alert(`You chose ${x}, computer chose ${y}, computer won`)
+                computerWin++
+            }
+            else if (x == 'scissors' && y == 'rock') {
+                alert(`You chose ${x}, computer chose ${y}, computer won`)
+                computerWin++
+            }
+            else if (x == 'scissors' && y == 'paper') {
+                alert(`You chose ${x}, computer chose ${y}, palyer won`)
+                playerwin++
+            }
+        }
+
+        function finalResult() {
+            if(playerwin === computerWin) alert(`Your score : ${playerwin}, computer score: ${computerWin}, Match Tied`)
+            else if(playerwin > computerWin) alert(`Computer score: ${computerWin}, player score: ${playerwin}, Congratulations !!You Won`)
+            else alert(`Your score: ${playerwin} , computer score: ${computerWin}, Computer Won.`)
+        }
+
+        finalResult();
+
+    </script>
+</body>
+
+</html>
