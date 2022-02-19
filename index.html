@@ -10,6 +10,8 @@
 
 <body>
     <script>
+        alert("Classic Rock-Paper-Scissors game of 5 rounds. Hit Enter to continue")
+        alert("Choose between 'Rock, 'Paper', Scissors'")
         const choiceArray = ['rock', 'paper', 'scissors']
         let playerwin = 0;
         let computerWin = 0;
@@ -68,8 +70,8 @@
         }
 
         function finalResult() {
-            if(playerwin === computerWin) alert(`Your score : ${playerwin}, computer score: ${computerWin}, Match Tied`)
-            else if(playerwin > computerWin) alert(`Computer score: ${computerWin}, player score: ${playerwin}, Congratulations !!You Won`)
+            if (playerwin === computerWin) alert(`Your score : ${playerwin}, computer score: ${computerWin}, Match Tied`)
+            else if (playerwin > computerWin) alert(`Computer score: ${computerWin}, player score: ${playerwin}, Congratulations !!You Won`)
             else alert(`Your score: ${playerwin} , computer score: ${computerWin}, Computer Won.`)
         }
 
