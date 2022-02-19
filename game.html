@@ -17,6 +17,17 @@
             playerChoice = playerChoice.toLowerCase()
             return playerChoice;
         }
+
+        function computerPlay() {
+            return randomChoice();
+        }
+
+        function randomChoice() {
+            let randomNumber = Math.floor(Math.random() * 3)
+            if(randomNumber === 0) return choiceArray[0]
+            else if(randomNumber == 1) return choiceArray[1]
+            else return choiceArray[2]
+        }
     </script>
 </body>
 </html>
