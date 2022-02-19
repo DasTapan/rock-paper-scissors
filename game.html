@@ -67,6 +67,14 @@
             }
         }
 
+        function finalResult() {
+            if(playerwin === computerWin) alert(`Your score : ${playerwin}, computer score: ${computerWin}, Match Tied`)
+            else if(playerwin > computerWin) alert(`Computer score: ${computerWin}, player score: ${playerwin}, Congratulations !!You Won`)
+            else alert(`Your score: ${playerwin} , computer score: ${computerWin}, Computer Won.`)
+        }
+
+        finalResult();
+
     </script>
 </body>
 
