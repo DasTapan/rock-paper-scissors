@@ -32,12 +32,12 @@
             else if (randomNumber == 1) return choiceArray[1]
             else return choiceArray[2]
         }
-
+        //run the game() five rounds
         for (let i = 0; i < 5; i++) {
             game(playerPlay, computerPlay)
 
         }
-
+        //the core logic of winner selection
         function game(a, b) {
             let x = a()
             let y = b()
@@ -70,7 +70,7 @@
         }
 
         function finalResult() {
-            if (playerwin === computerWin) alert(`Your score : ${playerwin}, computer score: ${computerWin}, Match Tied`)
+            if (playerwin === computerWin) alert(`Your score : ${playerwin}, computer score: ${computerWin}, Series Tied`)
             else if (playerwin > computerWin) alert(`Computer score: ${computerWin}, player score: ${playerwin}, Congratulations !!You Won`)
             else alert(`Your score: ${playerwin} , computer score: ${computerWin}, Computer Won.`)
         }
