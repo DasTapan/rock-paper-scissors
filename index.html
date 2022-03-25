@@ -9,75 +9,79 @@
 </head>
 
 <body>
+    <button id="rock">ROCK</button>
+    <button id="paper">PAPER</button>
+    <button id="scissors">SCISSORS</button>
+
     <script>
-        alert("Classic Rock-Paper-Scissors game of 5 rounds. Hit Enter to continue")
-        alert("Choose between 'Rock, 'Paper', Scissors'")
+        //three choices for user
         const choiceArray = ['rock', 'paper', 'scissors']
-        let playerwin = 0;
+        let playerWin = 0;
         let computerWin = 0;
+        //div for displaying scorecard
+        const div = document.createElement('div');
+        document.body.appendChild(div);
+        div.textContent = `Player: ${playerWin} Computer:${computerWin}`;
+        //div for displaying messeage
+        const resultDiv = document.createElement('div');
+        document.body.appendChild(resultDiv);
+        //listen player input
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                let playerChoice = button.id;
+                // console.log(playerChoice);
+                game(playerChoice, computerChoice());
+            })
+        })
 
-        function playerPlay() {
-            let playerChoice = prompt("Enter :")
-            playerChoice = playerChoice.toLowerCase()
-            return playerChoice;
-        }
-
-        function computerPlay() {
-            return randomChoice();
-        }
-
-        function randomChoice() {
+        function computerChoice() {
             let randomNumber = Math.floor(Math.random() * 3)
             if (randomNumber === 0) return choiceArray[0]
             else if (randomNumber == 1) return choiceArray[1]
             else return choiceArray[2]
         }
-        //run the game() five rounds
-        for (let i = 0; i < 5; i++) {
-            game(playerPlay, computerPlay)
 
+        function game(arg1, arg2) {
+            //check score before beginning function
+            if (playerWin == 5 || computerWin == 5) {
+                return;
+            } else {
+                if (arg1 === arg2) resultDiv.textContent = 'Tied. Same choice';
+                else if (arg1 == 'rock' && arg2 == 'paper') {
+                    computerWin++;
+                    div.textContent = `Player: ${playerWin} Computer:${computerWin}`;
+                    resultDiv.textContent = `You chose ${arg1}, computer chose ${arg2}, computer won`;
+                }
+                else if (arg1 == 'rock' && arg2 == 'scissors') {
+                    playerWin++;
+                    div.textContent = `Player: ${playerWin} Computer:${computerWin}`;
+                    resultDiv.textContent = `You chose ${arg1}, computer chose ${arg2}, player won`;
+                }
+                else if (arg1 == 'paper' && arg2 == 'rock') {
+                    playerWin++;
+                    div.textContent = `Player: ${playerWin} Computer:${computerWin}`;
+                    resultDiv.textContent = `You chose ${arg1}, computer chose ${arg2}, player won`;
+                }
+                else if (arg1 == 'paper' && arg2 == 'scissors') {
+                    computerWin++;
+                    div.textContent = `Player: ${playerWin} Computer:${computerWin}`;
+                    resultDiv.textContent = `You chose ${arg1}, computer chose ${arg2}, computer won`;
+                }
+                else if (arg1 == 'scissors' && arg2 == 'rock') {
+                    computerWin++;
+                    div.textContent = `Player: ${playerWin} Computer:${computerWin}`;
+                    resultDiv.textContent = `You chose ${arg1}, computer chose ${arg2}, computer won`;
+                }
+                else if (arg1 == 'scissors' && arg2 == 'paper') {
+                    playerWin++;
+                    div.textContent = `Player: ${playerWin} Computer:${computerWin}`;
+                    resultDiv.textContent = `You chose ${arg1}, computer chose ${arg2}, palyer won`;
+                }
+                //check score after executing logic
+                if (playerWin == 5) resultDiv.textContent = `Congrats!! You own by ${playerWin}-${computerWin}`;
+                if (computerWin == 5) resultDiv.textContent = `Computer own by ${computerWin}-${playerWin}`;
+            }
         }
-        //the core logic of winner selection
-        function game(a, b) {
-            let x = a()
-            let y = b()
-
-            if (x === y) alert('Tied. Same choice')
-            else if (x == 'rock' && y == 'paper') {
-                alert(`You chose ${x}, computer chose ${y}, computer won`)
-                computerWin++
-            }
-            else if (x == 'rock' && y == 'scissors') {
-                alert(`You chose ${x}, computer chose ${y}, player won`)
-                playerwin++
-            }
-            else if (x == 'paper' && y == 'rock') {
-                alert(`You chose ${x}, computer chose ${y}, player won`)
-                playerwin++
-            }
-            else if (x == 'paper' && y == 'scissors') {
-                alert(`You chose ${x}, computer chose ${y}, computer won`)
-                computerWin++
-            }
-            else if (x == 'scissors' && y == 'rock') {
-                alert(`You chose ${x}, computer chose ${y}, computer won`)
-                computerWin++
-            }
-            else if (x == 'scissors' && y == 'paper') {
-                alert(`You chose ${x}, computer chose ${y}, palyer won`)
-                playerwin++
-            }
-        }
-
-        function finalResult() {
-            if (playerwin === computerWin) alert(`Your score : ${playerwin}, computer score: ${computerWin}, Series Tied`)
-            else if (playerwin > computerWin) alert(`Computer score: ${computerWin}, player score: ${playerwin}, Congratulations !!You Won`)
-            else alert(`Your score: ${playerwin} , computer score: ${computerWin}, Computer Won.`)
-        }
-
-        finalResult();
-
     </script>
 </body>
-
-</html>
